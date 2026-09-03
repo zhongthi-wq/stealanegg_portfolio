@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Crown, Sparkles, ExternalLink, Video, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Shield, Crown, Sparkles, ExternalLink, Video, MessageSquare, Flame } from 'lucide-react';
 import { sound } from '../utils/audio';
 
 function YoutubeIcon({ className = "w-4 h-4" }) {
@@ -12,7 +12,7 @@ function YoutubeIcon({ className = "w-4 h-4" }) {
 
 export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
   const [subTab, setSubTab] = useState('staff'); // 'staff' | 'creators'
-  const { owner, developers, mod, communityManager, testers, mediaCreators } = adminStaffAndCreators;
+  const { owner, developers, mod, communityManager, testers, featuredYoutubers, mediaCreators } = adminStaffAndCreators;
 
   return (
     <div className="space-y-8 animate-fadeIn">
@@ -398,24 +398,122 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
 
       {/* ================= TAB 2: MEDIA CREATORS ================= */}
       {subTab === 'creators' && (
-        <div className="space-y-6 animate-fadeIn">
+        <div className="space-y-8 animate-fadeIn">
+          
+          {/* PART 1: FAMOUS YOUTUBERS WHO PLAYED & REVIEWED THE GAME */}
+          <div className="bg-[#18212e] border-4 border-yellow-400/80 rounded-3xl p-6 shadow-stud-card">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-slate-800 pb-4 mb-6">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Flame className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+                  <h3 className="game-text text-2xl md:text-3xl text-yellow-300">
+                    FEATURED YOUTUBERS (PLAYED &amp; REVIEWED)
+                  </h3>
+                </div>
+                <p className="text-xs font-bubble text-slate-300 mt-0.5">
+                  Top YouTube icons who have explored, raided, and reviewed Steal An Egg!
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 bg-yellow-400/10 text-yellow-300 border border-yellow-400/40 rounded-xl font-game text-xs flex items-center gap-1.5 shadow">
+                  <img src={verifiedBadge} alt="Badge" className="w-4 h-4" />
+                  <span>Featured Stars</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Featured YouTubers Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {featuredYoutubers.map((star, idx) => (
+                <div
+                  key={idx}
+                  className="bg-slate-900 border-3 border-black rounded-2xl p-5 hover:border-yellow-400/70 transition flex flex-col justify-between shadow-md group"
+                >
+                  <div>
+                    <div className="flex items-start gap-4 mb-3">
+                      {/* Photo Thumbnail */}
+                      <div className="relative flex-shrink-0">
+                        <div className="w-20 h-20 rounded-2xl bg-slate-950 border-3 border-black overflow-hidden p-0.5 shadow">
+                          <img
+                            src={star.avatar}
+                            alt={star.name}
+                            className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
+                          />
+                        </div>
+                        <div className="absolute -bottom-1 -right-1">
+                          <img
+                            src={verifiedBadge}
+                            alt="Verified"
+                            className="w-5 h-5 drop-shadow"
+                            title="Verified Creator"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                          <span className="px-2 py-0.5 bg-red-600 text-white font-game text-[9px] rounded uppercase flex items-center gap-1">
+                            <YoutubeIcon className="w-2.5 h-2.5" />
+                            YouTube
+                          </span>
+                          <span className="px-2 py-0.5 bg-yellow-400/20 text-yellow-300 font-bubble text-[9px] rounded font-bold">
+                            {star.subscribers}
+                          </span>
+                        </div>
+                        <h4 className="game-text text-lg text-white truncate flex items-center gap-1.5">
+                          <span>{star.name}</span>
+                          <img src={verifiedBadge} alt="Verified" className="w-3.5 h-3.5 inline-block" />
+                        </h4>
+                        <span className="text-[11px] font-game text-emerald-400 block">
+                          ✓ {star.tag}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="font-sans text-xs text-slate-300 leading-relaxed mb-4">
+                      {star.bio}
+                    </p>
+                  </div>
+
+                  {/* YouTube Watch Button */}
+                  <div className="pt-3 border-t border-slate-800">
+                    <a
+                      href={star.channelUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => sound.playPop()}
+                      className="w-full btn-3d py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-game text-xs flex items-center justify-center gap-1.5 border border-black shadow"
+                    >
+                      <YoutubeIcon className="w-4 h-4 text-white" />
+                      <span>Watch on YouTube</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* PART 2: COMMUNITY MEDIA PARTNERS */}
           <div className="bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card">
             <div className="flex items-center justify-between border-b-2 border-slate-800 pb-4 mb-6">
               <div>
                 <div className="flex items-center gap-2">
                   <YoutubeIcon className="w-6 h-6 text-red-500" />
                   <h3 className="game-text text-2xl md:text-3xl text-white">
-                    OFFICIAL MEDIA CREATORS
+                    COMMUNITY CREATOR PARTNERS
                   </h3>
                 </div>
                 <p className="text-xs font-bubble text-slate-400">
-                  Featured YouTube and TikTok content creators covering Steal An Egg
+                  Dedicated Roblox &amp; TikTok video creators covering Steal An Egg
                 </p>
               </div>
 
               <div className="flex items-center gap-1.5 px-3 py-1 bg-black/60 rounded-xl border border-yellow-400/60">
                 <img src={verifiedBadge} alt="Badge" className="w-4 h-4" />
-                <span className="text-xs font-game text-yellow-300">Verified Creators</span>
+                <span className="text-xs font-game text-yellow-300">Creator Partners</span>
               </div>
             </div>
 
@@ -450,7 +548,8 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                       {/* Info */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="px-2 py-0.5 bg-red-600 text-white font-game text-[10px] rounded uppercase">
+                          <span className="px-2 py-0.5 bg-red-600 text-white font-game text-[10px] rounded uppercase flex items-center gap-1">
+                            <YoutubeIcon className="w-2.5 h-2.5" />
                             {creator.platform}
                           </span>
                           <span className="px-2 py-0.5 bg-black/60 text-yellow-300 font-bubble text-[10px] rounded border border-yellow-400/40">
@@ -461,9 +560,14 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                           <span>{creator.name}</span>
                           <img src={verifiedBadge} alt="Verified" className="w-4 h-4 inline-block" />
                         </h4>
-                        {creator.robloxUsername && (
+                        {creator.robloxUsername ? (
                           <span className="text-xs font-bubble text-slate-400 block">
                             Roblox: <b className="text-roblox-cyan">@{creator.robloxUsername}</b>
+                          </span>
+                        ) : (
+                          <span className="text-xs font-bubble text-red-400 flex items-center gap-1">
+                            <YoutubeIcon className="w-3 h-3" />
+                            Official YouTube Channel
                           </span>
                         )}
                       </div>
@@ -474,7 +578,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                     </p>
                   </div>
 
-                  {/* Links Row */}
+                  {/* Action Buttons Row */}
                   <div className="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
                     <a
                       href={creator.channelUrl}
@@ -488,7 +592,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                       <ExternalLink className="w-3 h-3" />
                     </a>
 
-                    {creator.robloxUrl && (
+                    {creator.hasRoblox && creator.robloxUrl ? (
                       <a
                         href={creator.robloxUrl}
                         target="_blank"
@@ -497,6 +601,11 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                       >
                         Roblox Profile <ExternalLink className="w-3 h-3" />
                       </a>
+                    ) : (
+                      <span className="text-[11px] font-bubble text-slate-500 flex items-center gap-1">
+                        <YoutubeIcon className="w-3 h-3 text-red-500" />
+                        YouTube Partner
+                      </span>
                     )}
                   </div>
                 </div>
@@ -504,6 +613,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
             </div>
 
           </div>
+
         </div>
       )}
 

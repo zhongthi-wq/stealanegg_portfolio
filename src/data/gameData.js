@@ -206,6 +206,81 @@ export const gameData = {
       }
     ],
 
+    featuredYoutubers: [
+      {
+        name: "SSundee",
+        channelUrl: "https://www.youtube.com/@SSundee",
+        avatar: "/assets/youtubers/Sundeee.jpg",
+        subscribers: "24.5M Subs",
+        badge: "⭐ YOUTUBE TITAN",
+        tag: "Played & Reviewed",
+        color: "border-amber-500 text-amber-300",
+        verified: true,
+        hasRoblox: false,
+        bio: "Legendary gaming YouTuber with over 24 million subscribers, reviewing Steal An Egg raids, pet hatching, and insane speed gameplay!"
+      },
+      {
+        name: "Flamingo",
+        channelUrl: "https://www.youtube.com/@flamingo",
+        avatar: "/assets/youtubers/Flamingo.jpg",
+        subscribers: "13.2M Subs",
+        badge: "⭐ ROBLOX ICON",
+        tag: "Played & Reviewed",
+        color: "border-rose-500 text-rose-300",
+        verified: true,
+        hasRoblox: false,
+        bio: "Albert (Flamingo), one of the biggest Roblox creators in history, showcasing Steal An Egg funny moments and base raids!"
+      },
+      {
+        name: "MiniBloxia",
+        channelUrl: "https://www.youtube.com/@MiniBloxia",
+        avatar: "/assets/youtubers/MiniBloxia.jpg",
+        subscribers: "1.2M Subs",
+        badge: "🌟 FEATURED CREATOR",
+        tag: "Played & Reviewed",
+        color: "border-red-500 text-red-300",
+        verified: true,
+        hasRoblox: false,
+        bio: "Top-tier Roblox simulator and egg raiding creator exploring divine eggs, hidden zones, and supersonic treadmill speeds."
+      },
+      {
+        name: "real.kittgaming",
+        channelUrl: "https://www.youtube.com/@real.kittgaming",
+        avatar: "/assets/youtubers/Kitt gaming.jpg",
+        subscribers: "840K Subs",
+        badge: "🌟 FEATURED CREATOR",
+        tag: "Played & Reviewed",
+        color: "border-red-500 text-red-300",
+        verified: true,
+        hasRoblox: false,
+        bio: "Thrilling Roblox pet collecting and speed running gameplay, highlighting secret hatch probabilities and egg heists."
+      },
+      {
+        name: "mayrushart",
+        channelUrl: "https://www.youtube.com/@mayrushart",
+        avatar: "/assets/youtubers/Mayrusherart.jpg",
+        subscribers: "550K Subs",
+        badge: "🌟 FEATURED CREATOR",
+        tag: "Played & Reviewed",
+        color: "border-red-500 text-red-300",
+        verified: true,
+        hasRoblox: false,
+        bio: "High-energy Roblox animation and creative review channel testing out Steal An Egg mutations and base upgrades."
+      },
+      {
+        name: "BachaBlox",
+        channelUrl: "https://www.youtube.com/@BachaBlox",
+        avatar: "/assets/youtubers/bachablox.jpg",
+        subscribers: "310K Subs",
+        badge: "🌟 FEATURED CREATOR",
+        tag: "Played & Reviewed",
+        color: "border-red-500 text-red-300",
+        verified: true,
+        hasRoblox: false,
+        bio: "Adventurous Roblox gaming videos exploring every egg tier, treadmill rebirth, and pet trading values."
+      }
+    ],
+
     mediaCreators: [
       {
         name: "Jujubo TV",
@@ -215,6 +290,7 @@ export const gameData = {
         color: "border-red-500 text-red-400",
         avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=JujuboTV&backgroundColor=e11d48",
         verified: true,
+        hasRoblox: false,
         bio: "Official creator partner making thrilling Steal An Egg challenge videos and egg hunts."
       },
       {
@@ -227,6 +303,7 @@ export const gameData = {
         color: "border-red-500 text-red-400",
         avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-CE948092B8897068ACD9420E2F771935-Png/150/150/AvatarHeadshot/Png/noFilter",
         verified: true,
+        hasRoblox: true,
         bio: "Content creator streaming egg stealing raids, treadmill speedruns, and community trades."
       },
       {
@@ -239,6 +316,7 @@ export const gameData = {
         color: "border-pink-500 text-pink-400",
         avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E899E47EC0F284B3EA8EEE01D449F52B-Png/150/150/AvatarHeadshot/Png/noFilter",
         verified: true,
+        hasRoblox: true,
         bio: "Creating viral Steal An Egg TikTok reels, pet memes, and rapid hatching montages."
       },
       {
@@ -251,6 +329,7 @@ export const gameData = {
         color: "border-red-500 text-red-400",
         avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8527DA51A871263EE94A68EFD863741D-Png/150/150/AvatarHeadshot/Png/noFilter",
         verified: true,
+        hasRoblox: true,
         bio: "In-depth Steal An Egg guides, base defensive traps, and pet value updates."
       }
     ]
