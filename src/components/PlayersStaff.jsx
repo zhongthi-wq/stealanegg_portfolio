@@ -23,7 +23,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
   const [subTab, setSubTab] = useState(() => {
     if (typeof window !== 'undefined' && window.location.hash) {
       const h = window.location.hash.replace('#', '').toLowerCase();
-      if (['creators', 'itslossi', 'lossi', 'media', 'tiktok', 'creator'].includes(h)) {
+      if (['creators', 'itslossi', 'lossi', 'lossinion', 'media', 'tiktok', 'creator'].includes(h)) {
         return 'creators';
       }
     }
@@ -48,12 +48,12 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
     const handleHash = () => {
       if (typeof window === 'undefined') return;
       const h = window.location.hash.replace('#', '').toLowerCase();
-      if (['creators', 'itslossi', 'lossi', 'media', 'tiktok', 'creator'].includes(h)) {
+      if (['creators', 'itslossi', 'lossi', 'lossinion', 'media', 'tiktok', 'creator'].includes(h)) {
         setSubTab('creators');
         if (h === 'tiktok') {
           setCreatorCategory('tiktok');
         }
-        if (h === 'itslossi' || h === 'lossi' || h === 'creators') {
+        if (h === 'itslossi' || h === 'lossi' || h === 'lossinion' || h === 'creators') {
           setHighlightCard(true);
           setTimeout(() => {
             const el = document.getElementById('itslossi');
@@ -552,19 +552,33 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                     {vipCreator.bio}
                   </p>
 
-                  {/* Action Buttons: TikTok, Roblox & Share Direct Link */}
+                  {/* Action Buttons: TikTok Accounts, Roblox & Share Direct Link */}
                   <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
                     <a
                       href={vipCreator.tiktokUrl}
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => sound.playPop()}
-                      className="btn-3d px-5 py-2.5 rounded-xl bg-black hover:bg-slate-900 text-white font-game text-xs md:text-sm border-2 border-pink-500 flex items-center gap-2 shadow-lg"
+                      className="btn-3d px-4 py-2.5 rounded-xl bg-black hover:bg-slate-900 text-white font-game text-xs md:text-sm border-2 border-pink-500 flex items-center gap-2 shadow-lg"
                     >
                       <TikTokIcon className="w-4 h-4 text-pink-400" />
                       <span>TikTok: {vipCreator.tiktokHandle}</span>
                       <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                     </a>
+
+                    {vipCreator.tiktokUrl2 && (
+                      <a
+                        href={vipCreator.tiktokUrl2}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => sound.playPop()}
+                        className="btn-3d px-4 py-2.5 rounded-xl bg-black hover:bg-slate-900 text-white font-game text-xs md:text-sm border-2 border-pink-500 flex items-center gap-2 shadow-lg"
+                      >
+                        <TikTokIcon className="w-4 h-4 text-pink-400" />
+                        <span>TikTok: {vipCreator.tiktokHandle2}</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                      </a>
+                    )}
 
                     <a
                       href={vipCreator.robloxUrl}
@@ -710,17 +724,33 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
 
                     {/* Action Links */}
                     <div className="pt-2.5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
-                      <a
-                        href={tiktoker.tiktokUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={() => sound.playPop()}
-                        className="btn-3d px-3 py-1.5 rounded-xl bg-black hover:bg-slate-900 text-white font-game text-xs flex items-center gap-1.5 border border-pink-500 shadow"
-                      >
-                        <TikTokIcon className="w-3.5 h-3.5 text-pink-400" />
-                        <span>Open TikTok</span>
-                        <ExternalLink className="w-3 h-3 text-slate-400" />
-                      </a>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <a
+                          href={tiktoker.tiktokUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={() => sound.playPop()}
+                          className="btn-3d px-3 py-1.5 rounded-xl bg-black hover:bg-slate-900 text-white font-game text-xs flex items-center gap-1.5 border border-pink-500 shadow"
+                        >
+                          <TikTokIcon className="w-3.5 h-3.5 text-pink-400" />
+                          <span>{tiktoker.tiktokUrl2 ? '@itslossi' : 'Open TikTok'}</span>
+                          <ExternalLink className="w-3 h-3 text-slate-400" />
+                        </a>
+
+                        {tiktoker.tiktokUrl2 && (
+                          <a
+                            href={tiktoker.tiktokUrl2}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => sound.playPop()}
+                            className="btn-3d px-3 py-1.5 rounded-xl bg-black hover:bg-slate-900 text-white font-game text-xs flex items-center gap-1.5 border border-pink-500 shadow"
+                          >
+                            <TikTokIcon className="w-3.5 h-3.5 text-pink-400" />
+                            <span>@lossinion</span>
+                            <ExternalLink className="w-3 h-3 text-slate-400" />
+                          </a>
+                        )}
+                      </div>
 
                       {tiktoker.hasRoblox && tiktoker.robloxUrl ? (
                         <a

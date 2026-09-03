@@ -290,6 +290,12 @@ export const gameData = {
       avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A8E6BDCE581F183EC45F976798F9A4C7-Png/150/150/AvatarHeadshot/Png/noFilter",
       tiktokHandle: "@itslossi",
       tiktokUrl: "https://www.tiktok.com/@itslossi",
+      tiktokHandle2: "@lossinion",
+      tiktokUrl2: "https://www.tiktok.com/@lossinion",
+      tiktokAccounts: [
+        { handle: "@itslossi", url: "https://www.tiktok.com/@itslossi", label: "TikTok (Main)" },
+        { handle: "@lossinion", url: "https://www.tiktok.com/@lossinion", label: "TikTok (@lossinion)" }
+      ],
       badges: [
         { label: "TESTER", color: "bg-fuchsia-600 text-white", isTester: true },
         { label: "VERIFIED CREATOR", color: "bg-yellow-400 text-black", isVerified: true },
@@ -297,15 +303,16 @@ export const gameData = {
         { label: "FAMOUS TIKTOK STREAMER", color: "bg-black text-white border border-pink-500", isTiktok: true }
       ],
       tag: "VIP CREATOR & IN-GAME PARTNER",
-      bio: "Famous TikTok creator & streamer (@itslossi). Official Steal An Egg QA tester equipped with special in-game privileges including item spawner, rare egg gifting, and live stream community drop events!"
+      bio: "Famous TikTok creator & streamer (@itslossi & @lossinion). Official Steal An Egg QA tester equipped with special in-game privileges including item spawner, rare egg gifting, and live stream community drop events!"
     },
 
     tiktokCreators: [
       {
         name: "ItsLossi",
         displayName: "Minion",
-        handle: "@itslossi",
+        handle: "@itslossi & @lossinion",
         tiktokUrl: "https://www.tiktok.com/@itslossi",
+        tiktokUrl2: "https://www.tiktok.com/@lossinion",
         robloxUrl: "https://www.roblox.com/users/11216231342/profile",
         avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A8E6BDCE581F183EC45F976798F9A4C7-Png/150/150/AvatarHeadshot/Png/noFilter",
         followers: "VIP Streamer",
@@ -313,7 +320,7 @@ export const gameData = {
         verified: true,
         hasRoblox: true,
         perks: "Item Spawner & Egg Gifter",
-        bio: "Famous TikTok creator & streamer. Official game QA tester with in-game item spawner & egg gifting perks for live viewers!"
+        bio: "Famous TikTok creator & streamer (@itslossi & @lossinion). Official game QA tester with in-game item spawner & egg gifting perks for live viewers!"
       },
       {
         name: "KreekCraft",

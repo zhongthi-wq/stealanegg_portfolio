@@ -16,7 +16,7 @@ export default function App() {
     if (['home', 'wiki', 'players', 'updates', 'codes', 'faq'].includes(clean)) {
       return clean;
     }
-    if (['creators', 'itslossi', 'lossi', 'media', 'tiktok', 'creator', 'staff', 'admin'].includes(clean)) {
+    if (['creators', 'itslossi', 'lossi', 'lossinion', 'media', 'tiktok', 'creator', 'staff', 'admin'].includes(clean)) {
       return 'players';
     }
     return 'home';
