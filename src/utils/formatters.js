@@ -1,4 +1,4 @@
-// Formatter utilities for Steal An Egg catalog
+// Formatter utilities for Steal An Egg catalog (English)
 export function compact(num) {
   if (num == null || isNaN(num)) return null;
   const n = Number(num);
@@ -10,9 +10,9 @@ export function compact(num) {
 }
 
 export function formatTime(seconds) {
-  if (!seconds || seconds <= 0) return "Tức thì";
-  if (seconds >= 86400) return `${(seconds / 86400).toFixed(1).replace(/\.0$/, "")} ngày`;
-  if (seconds >= 3600) return `${(seconds / 3600).toFixed(1).replace(/\.0$/, "")} giờ`;
-  if (seconds >= 60) return `${Math.round(seconds / 60)} phút`;
-  return `${seconds} giây`;
+  if (!seconds || seconds <= 0) return "Instant";
+  if (seconds >= 86400) return `${(seconds / 86400).toFixed(1).replace(/\.0$/, "")} days`;
+  if (seconds >= 3600) return `${(seconds / 3600).toFixed(1).replace(/\.0$/, "")} hrs`;
+  if (seconds >= 60) return `${Math.round(seconds / 60)} mins`;
+  return `${seconds}s`;
 }

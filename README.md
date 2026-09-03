@@ -1,46 +1,37 @@
-# 🥚 Steal An Egg — Roblox Developer & Art Portfolio
+# 🥚 Steal An Egg — Official Game Hub & Wiki
 
-A vibrant, playful portfolio website designed for Roblox Game Developers, Luau Scripters, and 3D Voxel/Stud Artists. Inspired by classic Roblox stud graphics, retro Lego brick aesthetics, and viral arcade mechanics like **"Steal a Brainrot" / "Steal an Egg"**.
+The official community website and interactive database for **Steal An Egg** on Roblox! Features real-time pet & egg stats (236 items), active promo codes, patch notes, live update countdowns, staff hall of fame, and global leaderboards.
 
-![Showcase](public/assets/pet-index-showcase.png)
-
-## 🚀 Live Demo & Repository
-- **GitHub Repository**: [https://github.com/zhongthi-wq/stealanegg_portfolio](https://github.com/zhongthi-wq/stealanegg_portfolio)
-- **Deployment Ready**: Optimized for 1-click deployment on [Vercel](https://vercel.com).
+![Game Banner](public/assets/noFilter%20(23).webp)
 
 ---
 
-## ✨ Features
+## 🎮 Game Description & How to Play
 
-- **🧱 Classic Roblox Stud Texture**: Custom-crafted repeating stud patterns and beveled frames for an authentic Lego/Roblox brick vibe.
-- **🎨 Vibrant & Cartoon Aesthetic**: High-energy neon accents (Electric Cyan, Hot Magenta, Acid Lime, Golden Sun), thick cartoon strokes, and tactile 3D buttons that physically press down when clicked.
-- **🎒 In-Game "Pet / Project Index"**:
-  - Interactive item vault inspired by Roblox pet collection indexes.
-  - Rarity frames (*Common, Rare, Epic, Legendary, Brainrot Godly*).
-  - Search & filter by categories (*Brainrot, Games, 3D Assets, UI Systems, Core Luau*).
-  - Unlocked progress bar and rewarding sound effects.
-  - Interactive Inspector Modal with detailed roles, technical stack, and playable Roblox links.
-- **🛒 Commission Shop (Robux & Fiat)**:
-  - In-game Gamepass-styled pricing tiers.
-  - Clear Terms of Service (ToS) policy.
-- **💬 1-Click Discord Copy & Socials**:
-  - Instant clipboard copy with celebratory confetti and sound effects.
-  - Quick links to Roblox Profile, Talent Hub, GitHub, and Twitter.
-- **🔊 Web Audio SFX**: Built-in 8-bit arcade pop, chime, and claim sound synthesizers (no external sound files required).
-- **⚡ Blazing Fast**: Built with React 18, Vite, and Tailwind CSS.
+Welcome to **Steal An Egg**!
+
+- 🥚 **Steal eggs from pets** in wild biomes & enemy nests
+- 🐣 **Hatch eggs** to collect rare voxel beasts & mythical dragons
+- 💰 **Earn money** from your pets passively (up to billions $/s)
+- ⬆️ **Upgrade your treadmill and base** to outspeed raiders
+- 🏃 **Train on the treadmill** to gain supersonic Speed
+- 🥷 **Steal eggs from other players** across live multiplayer servers
+- ✨ **Discover rarer eggs, pets, sizes, and mutations!**
+
+Supports **Desktop, Console (Xbox/PS), Mobile, and Tablet** players.
 
 ---
 
-## 🛠️ How to Customize Your Info
+## ✨ Features on this Hub
 
-All profile data, projects, commission rates, and links are neatly organized in a single file:
-👉 **[`src/data/portfolioData.js`](src/data/portfolioData.js)**
-
-To change:
-- **Your Name & Bio**: Update `devProfile` (name, tagline, stats, avatar, level).
-- **Your Projects & Screenshots**: Add or modify entries in `projects` array. To add new images, place them inside `public/assets/` and reference their path (e.g. `image: '/assets/my-game.png'`).
-- **Your Discord & Links**: Update `socials.discordUsername` and URLs.
-- **Pricing & Packages**: Edit `commissions.packages` and `commissions.termsOfService`.
+- 🐾 **236-Item Pet & Egg Wiki**: Complete catalog with earning rates ($/s), model weight, egg weight, growth times, and large 3D renders.
+- 🏆 **Players & Staff Hall of Fame**:
+  - Official Devs, Scripters, Modelers & Admins.
+  - Global Top Egg Raiders leaderboard with speed levels and favorite pets.
+- 📢 **Updates & Events**: Live countdown timer for the next content drop, patch notes changelog, and leaked sneak peeks.
+- 🎁 **Active Promo Codes**: 1-click code copier with celebratory sound effects and in-game redemption guide.
+- ❓ **FAQ**: Player guide on mutations, anti-dupe trading, treadmill mechanics, and offline base protection.
+- 🧱 **Classic Roblox Stud & Vibrant Aesthetic**: Custom tiled stud texture pattern, tactile 3D buttons, and punchy comic typography.
 
 ---
 
@@ -50,13 +41,13 @@ To change:
 # Clone the repository
 git clone https://github.com/zhongthi-wq/stealanegg_portfolio.git
 
-# Navigate to project folder
+# Navigate into project folder
 cd stealanegg_portfolio
 
 # Install dependencies
 npm install
 
-# Run local dev server
+# Run local development server
 npm run dev
 
 # Build for production
@@ -67,15 +58,12 @@ npm run build
 
 ## 🌐 Deploy to Vercel (1-Click)
 
-1. Go to [vercel.com](https://vercel.com) and log in with your GitHub account (`zhongthi-wq`).
+1. Open [vercel.com](https://vercel.com) and log in with your GitHub account (`zhongthi-wq`).
 2. Click **"Add New..."** ➜ **"Project"**.
-3. Select the repository **`zhongthi-wq/stealanegg_portfolio`** and click **Import**.
-4. Vercel automatically detects **Vite**:
-   - **Framework Preset**: `Vite`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-5. Click **Deploy**! In ~30 seconds, your portfolio is live with a free `.vercel.app` domain and automatic SSL certificate. Any future `git push` to `main` will automatically re-deploy your site.
+3. Select **`zhongthi-wq/stealanegg_portfolio`** and click **Import**.
+4. Vercel automatically detects **Vite** settings (`npm run build`, output: `dist`).
+5. Click **Deploy**! Any future git push to `main` will automatically update the live site.
 
 ---
 
-© Steal An Egg. Built with React, Vite & Tailwind CSS. Not affiliated with Roblox Corporation.
+© Steal An Egg Development Team. All rights reserved. Not affiliated directly with Roblox Corporation.

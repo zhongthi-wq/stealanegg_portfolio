@@ -12,7 +12,6 @@ export default function PetEggVault() {
   const [rarityFilter, setRarityFilter] = useState('');
   const [selectedUids, setSelectedUids] = useState([]);
   const [inspectedUid, setInspectedUid] = useState(null);
-  const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
     fetch('/data.json')
@@ -20,7 +19,6 @@ export default function PetEggVault() {
       .then((json) => {
         setData(json);
         if (json.items && json.items.length > 0) {
-          // Default inspect the first godly / divine pet or item
           const first = json.items.find((it) => it.kind === 'pet') || json.items[0];
           setInspectedUid(`${first.category}-${first.kind}`);
         }
@@ -74,12 +72,6 @@ export default function PetEggVault() {
     });
   };
 
-  const handleInspect = (uid, e) => {
-    e.stopPropagation();
-    sound.playPop();
-    setInspectedUid(uid);
-  };
-
   const clearAllSelected = () => {
     sound.playPop();
     setSelectedUids([]);
@@ -99,16 +91,16 @@ export default function PetEggVault() {
 
   if (loading) {
     return (
-      <div className="bg-[#18212e] border-4 border-black rounded-3xl p-12 text-center shadow-stud-card">
+      <div id="wiki" className="bg-[#18212e] border-4 border-black rounded-3xl p-12 text-center shadow-stud-card bg-studs">
         <div className="text-4xl animate-bounce mb-3">🥚</div>
-        <div className="game-text text-xl text-yellow-300">Đang tải kho pet &amp; egg (236 items)...</div>
+        <div className="game-text text-xl text-yellow-300">Loading Pet &amp; Egg Wiki (236 items)...</div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      {/* Top Filter Bar (Styled after item_showcase TopBar) */}
+    <div id="wiki" className="space-y-6 pt-4">
+      {/* Top Filter Bar */}
       <div className="bg-[#151c27] border-4 border-black rounded-3xl p-4 md:p-6 shadow-stud-card relative overflow-hidden bg-studs">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-3">
@@ -117,10 +109,10 @@ export default function PetEggVault() {
             </div>
             <div>
               <h3 className="game-text text-xl md:text-2xl text-white">
-                Kho Dữ Liệu Steal An Egg
+                Pet &amp; Egg Official Wiki
               </h3>
               <p className="text-xs font-bubble text-slate-400">
-                Toàn bộ 236 mô hình Pet &amp; Trứng chính thức với chỉ số $/s, độ hiếm và icon 3D
+                Official database of all 236 Pets &amp; Eggs with earning rates, incubation times, and 3D icons
               </p>
             </div>
           </div>
@@ -134,7 +126,7 @@ export default function PetEggVault() {
                 onClick={clearAllSelected}
                 className="px-3 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-300 border-2 border-red-500/50 font-bubble text-xs rounded-xl transition"
               >
-                Bỏ chọn ({selectedUids.length})
+                Clear Selected ({selectedUids.length})
               </button>
             )}
           </div>
@@ -146,7 +138,7 @@ export default function PetEggVault() {
           <div className="lg:col-span-5 relative">
             <input
               type="search"
-              placeholder="Tìm pet, egg hoặc thể loại..."
+              placeholder="Search pets, eggs, or species..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full bg-slate-900 border-2 border-black rounded-xl px-3 py-2 pl-9 text-xs font-bubble text-white placeholder-slate-500 focus:outline-none focus:border-roblox-cyan shadow-inner"
@@ -162,7 +154,7 @@ export default function PetEggVault() {
                 kindFilter === '' ? 'bg-yellow-400 text-black shadow' : 'text-slate-400 hover:text-white'
               }`}
             >
-              Tất cả
+              All (236)
             </button>
             <button
               onClick={() => { sound.playPop(); setKindFilter('pet'); }}
@@ -170,7 +162,7 @@ export default function PetEggVault() {
                 kindFilter === 'pet' ? 'bg-roblox-cyan text-black shadow' : 'text-slate-400 hover:text-white'
               }`}
             >
-              🐾 Pet
+              🐾 Pets (118)
             </button>
             <button
               onClick={() => { sound.playPop(); setKindFilter('egg'); }}
@@ -178,7 +170,7 @@ export default function PetEggVault() {
                 kindFilter === 'egg' ? 'bg-roblox-pink text-white shadow' : 'text-slate-400 hover:text-white'
               }`}
             >
-              🥚 Egg
+              🥚 Eggs (118)
             </button>
           </div>
 
@@ -189,7 +181,7 @@ export default function PetEggVault() {
               onChange={(e) => { sound.playPop(); setRarityFilter(e.target.value); }}
               className="w-full bg-slate-900 border-2 border-black rounded-xl px-3 py-2 text-xs font-bubble text-white focus:outline-none focus:border-roblox-cyan shadow-inner"
             >
-              <option value="">Tất cả Rarity ({rarities.length} cấp)</option>
+              <option value="">All Rarities ({rarities.length} tiers)</option>
               {rarities.map((r) => (
                 <option key={r.id} value={r.id} style={{ color: r.color }}>
                   ● {r.name}
@@ -207,10 +199,10 @@ export default function PetEggVault() {
         <div className="lg:col-span-8 bg-[#18212e] border-4 border-black rounded-3xl p-4 md:p-6 shadow-stud-card bg-studs">
           <div className="flex items-center justify-between mb-4 border-b-2 border-slate-800 pb-3">
             <div className="font-game text-sm text-yellow-300 flex items-center gap-1.5">
-              <span>🎒</span> Danh sách hiển thị ({filtered.length} mục)
+              <span>🎒</span> Catalog Items ({filtered.length} visible)
             </div>
             <span className="text-[11px] font-bubble text-slate-400">
-              Nhấp vào card để xem chi tiết hoặc chọn
+              Click any card to inspect or select
             </span>
           </div>
 
@@ -301,7 +293,7 @@ export default function PetEggVault() {
                   <span>Item Inspector</span>
                 </span>
                 <span 
-                  className="px-2.5 py-0.5 rounded-lg text-xs font-game uppercase border border-black"
+                  className="px-2.5 py-0.5 rounded-lg text-xs font-game uppercase border border-black font-bold"
                   style={{ backgroundColor: activeItem.color, color: '#000' }}
                 >
                   {activeItem.rarityName}
@@ -347,7 +339,7 @@ export default function PetEggVault() {
               {/* Stats Box */}
               <div className="grid grid-cols-2 gap-2 bg-slate-900 border-2 border-black rounded-2xl p-3 mb-4 text-xs font-mono">
                 <div>
-                  <span className="text-slate-400 block text-[10px] uppercase">Earning Rate</span>
+                  <span className="text-slate-400 block text-[10px] uppercase">Income Rate</span>
                   <span className="text-green-400 font-bold text-sm">
                     {activeItem.earningRate != null ? `+$${compact(activeItem.earningRate)}/s` : '—'}
                   </span>
@@ -360,7 +352,7 @@ export default function PetEggVault() {
                 </div>
                 {activeItem.growthTime != null && (
                   <div className="col-span-2 pt-2 border-t border-slate-800 flex justify-between items-center">
-                    <span className="text-slate-400 text-[10px] uppercase">Thời gian ấp (Growth)</span>
+                    <span className="text-slate-400 text-[10px] uppercase">Incubation (Growth)</span>
                     <span className="text-roblox-cyan font-bold">
                       {formatTime(activeItem.growthTime)}
                     </span>
@@ -368,7 +360,7 @@ export default function PetEggVault() {
                 )}
                 {activeItem.eggWeightKg != null && (
                   <div className="col-span-2 pt-1 flex justify-between items-center">
-                    <span className="text-slate-400 text-[10px] uppercase">Khối lượng trứng</span>
+                    <span className="text-slate-400 text-[10px] uppercase">Egg Weight</span>
                     <span className="text-slate-200 font-bold">
                       {activeItem.eggWeightKg} kg
                     </span>
@@ -382,7 +374,7 @@ export default function PetEggVault() {
                 className="w-full btn-3d py-3 rounded-xl bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 text-black font-game text-sm uppercase border-2 border-black flex items-center justify-center gap-2 font-bold shadow-md"
               >
                 <Trophy className="w-4 h-4 text-black" />
-                <span>Sưu Tầm Vào Túi Đồ!</span>
+                <span>Collect in Game!</span>
               </button>
             </div>
           ) : null}
@@ -392,13 +384,13 @@ export default function PetEggVault() {
             <div className="bg-[#151c27] border-3 border-black rounded-2xl p-4 shadow-md">
               <div className="flex items-center justify-between mb-2">
                 <span className="game-text text-sm text-roblox-cyan">
-                  Đã Chọn: {selectedUids.length} vật phẩm
+                  Selected: {selectedUids.length} items
                 </span>
                 <button
                   onClick={clearAllSelected}
                   className="text-xs text-red-400 hover:underline font-bubble"
                 >
-                  Xoá hết
+                  Clear all
                 </button>
               </div>
               <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto">
