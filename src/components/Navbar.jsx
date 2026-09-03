@@ -15,7 +15,7 @@ export default function Navbar({ gameData, activeTab, onTabChange }) {
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
     { id: 'wiki', label: 'Pet & Egg Wiki', icon: BookOpen, badge: '236' },
-    { id: 'players', label: 'Players & Staff', icon: Users },
+    { id: 'players', label: 'Admin & Media', icon: Users },
     { id: 'updates', label: 'Updates & Events', icon: Bell },
     { id: 'codes', label: 'Codes', icon: Gift, badge: 'Free' },
     { id: 'faq', label: 'FAQ', icon: HelpCircle },

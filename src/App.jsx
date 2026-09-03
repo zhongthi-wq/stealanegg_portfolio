@@ -71,7 +71,10 @@ export default function App() {
 
         {activeTab === 'players' && (
           <div className="animate-fadeIn">
-            <PlayersStaff staffAndPlayers={gameData.staffAndPlayers} />
+            <PlayersStaff 
+              adminStaffAndCreators={gameData.adminStaffAndCreators} 
+              verifiedBadge={gameData.verifiedBadge} 
+            />
           </div>
         )}
 

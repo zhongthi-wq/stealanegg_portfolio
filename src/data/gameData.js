@@ -8,6 +8,7 @@ export const gameData = {
   robloxGroupUrl: "https://www.roblox.com/share/g/825735094",
   
   logo: "/assets/game-logo.png",
+  verifiedBadge: "/assets/roblox-verified-badge.webp",
   thumbnails: [
     "/assets/noFilter (23).webp",
     "/assets/noFilter (24).webp",
@@ -18,10 +19,10 @@ export const gameData = {
   howToPlay: [
     { icon: "🥚", text: "Steal eggs from pets in wild biomes & enemy nests" },
     { icon: "🐣", text: "Hatch eggs to collect rare pets & beasts" },
-    { icon: "💰", text: "Earn passive income & billions $/sec from your pets" },
-    { icon: "⬆️", text: "Upgrade your treadmill and base security" },
-    { icon: "🏃", text: "Train on the treadmill to gain insane Speed" },
-    { icon: "🥷", text: "Sneak into bases and steal eggs from other players" },
+    { icon: "💰", text: "Earn money from your pets passively" },
+    { icon: "⬆️", text: "Upgrade your treadmill and base" },
+    { icon: "🏃", text: "Train on the treadmill to gain Speed" },
+    { icon: "🥷", text: "Steal eggs from other players" },
     { icon: "✨", text: "Discover rarer eggs, pets, sizes, and mutations!" }
   ],
 
@@ -88,49 +89,170 @@ export const gameData = {
     { code: "TREADMILL", reward: "+1,000 Free Treadmill Training XP", status: "Active" }
   ],
 
-  staffAndPlayers: {
-    staff: [
+  adminStaffAndCreators: {
+    owner: {
+      username: "Brockkodile",
+      role: "Owner & Founder",
+      badge: "👑 OWNER",
+      color: "border-red-500 text-red-400",
+      accentBg: "bg-red-500/10",
+      badgeColor: "bg-gradient-to-r from-red-600 to-rose-600 text-white",
+      avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-5DCA1D61525DD28B971FFF12CCA88BD0-Png/150/150/AvatarHeadshot/Png/noFilter",
+      robloxUrl: "https://www.roblox.com/users/3889785873/profile#!#about",
+      verified: true,
+      hasCrown: true,
+      bio: "Owner and creator of Steal An Egg. Directs the vision, gameplay mechanics, and game events."
+    },
+
+    developers: [
       {
-        username: "StealAnEgg_Dev",
-        role: "Game Creator & Lead Dev",
-        badge: "👑 OWNER",
-        color: "border-yellow-400 text-yellow-300",
-        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=EggOwner&backgroundColor=ffd000",
-        bio: "Founder of Steal An Egg. Manages core gameplay loops, netcode and weekly events."
+        username: "serieko",
+        discordId: "serieko",
+        role: "Lead Developer",
+        badge: "💻 DEVELOPER",
+        color: "border-blue-500 text-blue-400",
+        accentBg: "bg-blue-500/10",
+        badgeColor: "bg-blue-600 text-white",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-86B2879561A4B0CFA3B24C0D8FE50A25-Png/150/150/AvatarHeadshot/Png/noFilter",
+        robloxUrl: "https://www.roblox.com/users/10751598093/profile",
+        verified: true,
+        bio: "Core game engineer. Builds Luau gameplay systems, treadmill speed mechanics, and server netcode."
       },
       {
-        username: "LuauMaster_X",
-        role: "Lead Systems Scripter",
-        badge: "🛡️ LEAD DEV",
-        color: "border-roblox-cyan text-roblox-cyan",
-        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=LuauMaster&backgroundColor=00d2ff",
-        bio: "Architect of treadmill speed physics, anti-dupe trading, and data persistence."
-      },
-      {
-        username: "VoxelArtist_3D",
-        role: "Lead 3D & Voxel Modeler",
-        badge: "🎨 ART DIRECTOR",
-        color: "border-roblox-pink text-roblox-pink",
-        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=VoxelQueen&backgroundColor=ff007f",
-        bio: "Created all 236 iconic stud-styled pet models, eggs, and biome environments."
-      },
-      {
-        username: "ChiefMod_Shield",
-        role: "Head Community Admin",
-        badge: "⚔️ HEAD ADMIN",
-        color: "border-roblox-green text-roblox-green",
-        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=ShieldMod&backgroundColor=10b981",
-        bio: "Discord community lead, anti-exploit enforcement & tournament manager."
+        username: "wiscript",
+        displayName: "wiscript",
+        discordId: "wiscript",
+        role: "Systems Developer",
+        badge: "💻 DEVELOPER",
+        color: "border-blue-500 text-blue-400",
+        accentBg: "bg-blue-500/10",
+        badgeColor: "bg-blue-600 text-white",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=wiscriptDev&backgroundColor=2563eb",
+        isDiscordOnly: true,
+        verified: true,
+        bio: "Backend Luau systems developer. Handles data persistence, trade locks, and server security."
       }
     ],
 
-    leaderboard: [
-      { rank: 1, name: "EggBandit_99", eggsStolen: "452,800", speedLevel: "Lvl 420", favoritePet: "Archdemon Dragon", badge: "🏆 TOP STEALER" },
-      { rank: 2, name: "SonicTreadmill", eggsStolen: "389,120", speedLevel: "Lvl 380", favoritePet: "Kitsune", badge: "⚡ SPEED DEMON" },
-      { rank: 3, name: "VoidRaider_Pro", eggsStolen: "310,450", speedLevel: "Lvl 350", favoritePet: "Balrog", badge: "⚔️ BASE INFILTRATOR" },
-      { rank: 4, name: "PetCollector_VN", eggsStolen: "284,900", speedLevel: "Lvl 310", favoritePet: "Brr Brr Patapim", badge: "🌟 VAULT MASTER" },
-      { rank: 5, name: "ShadowStriker", eggsStolen: "261,300", speedLevel: "Lvl 295", favoritePet: "Nightflame", badge: "🔥 TOP RAIDER" },
-      { rank: 6, name: "NoobStealer", eggsStolen: "240,000", speedLevel: "Lvl 280", favoritePet: "Demonic Egg", badge: "⭐ ELITE" }
+    mod: {
+      username: "utilisateur1lbg2",
+      displayName: "utilisateur1lbg2",
+      discordId: "utilisateur1lbg2",
+      role: "Game Moderator",
+      badge: "🛡️ MODERATOR",
+      color: "border-emerald-500 text-emerald-400",
+      accentBg: "bg-emerald-500/10",
+      badgeColor: "bg-emerald-600 text-white",
+      avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3390992166BD64EE83630DD305522BA2-Png/150/150/AvatarHeadshot/Png/noFilter",
+      robloxUrl: "https://www.roblox.com/users/1065906907/profile",
+      verified: true,
+      bio: "Official in-game moderator enforcing community safety, fair play, and anti-exploit rules."
+    },
+
+    communityManager: {
+      username: "kalgukso",
+      displayName: "kalgukso",
+      discordId: "kalgukso",
+      role: "Community Manager",
+      badge: "📢 COMMUNITY MANAGER",
+      color: "border-cyan-400 text-cyan-300",
+      accentBg: "bg-cyan-500/10",
+      badgeColor: "bg-cyan-600 text-white",
+      avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D1C1CEA96FDC9FF3944549A4408D6A9A-Png/150/150/AvatarHeadshot/Png/noFilter",
+      robloxUrl: "https://www.roblox.com/users/156980044/profile",
+      verified: true,
+      bio: "Manages player relations, official Discord announcements, tournaments, and community feedback."
+    },
+
+    testers: [
+      {
+        username: "divine_hogrider2321",
+        displayName: "divine_hogrider2321",
+        discordId: "divine_hogrider2321",
+        role: "Game Tester",
+        badge: "🧪 TESTER",
+        color: "border-fuchsia-500 text-fuchsia-300",
+        badgeColor: "bg-fuchsia-600 text-white",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=divineHogrider&backgroundColor=c026d3",
+        isDiscordOnly: true,
+        verified: true,
+        bio: "Dedicated QA tester finding edge-case bugs and balancing speed scaling."
+      },
+      {
+        username: "No_Vynestra",
+        displayName: "Vynestra",
+        discordId: "vyn3stra.",
+        role: "Game Tester",
+        badge: "🧪 TESTER",
+        color: "border-fuchsia-500 text-fuchsia-300",
+        badgeColor: "bg-fuchsia-600 text-white",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2600D5376DEBCBADDEFF4C67DF7AC747-Png/150/150/AvatarHeadshot/Png/noFilter",
+        robloxUrl: "https://www.roblox.com/users/8500653411/profile",
+        verified: true,
+        bio: "Specializes in testing egg base infiltration, bat combat, and hitbox detection."
+      },
+      {
+        username: "To4noNe_Rokuz",
+        displayName: "Yuuuki",
+        discordId: "itsyuuuki",
+        role: "Game Tester",
+        badge: "🧪 TESTER",
+        color: "border-fuchsia-500 text-fuchsia-300",
+        badgeColor: "bg-fuchsia-600 text-white",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-328F4D572C307331B50EDE69F68929B8-Png/150/150/AvatarHeadshot/Png/noFilter",
+        robloxUrl: "https://www.roblox.com/users/3415699949/profile",
+        verified: true,
+        bio: "Testing economy rates, pet mutation rolls, and trading security."
+      }
+    ],
+
+    mediaCreators: [
+      {
+        name: "Jujubo TV",
+        channelUrl: "https://www.youtube.com/@jujubotv",
+        platform: "YouTube",
+        badge: "🎬 MEDIA CREATOR",
+        color: "border-red-500 text-red-400",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=JujuboTV&backgroundColor=e11d48",
+        verified: true,
+        bio: "Official creator partner making thrilling Steal An Egg challenge videos and egg hunts."
+      },
+      {
+        name: "00WInterKIoudz",
+        robloxUsername: "WInterKIoudz",
+        robloxUrl: "https://www.roblox.com/users/225495866/profile",
+        channelUrl: "https://www.youtube.com/channel/UC6-GNJmiOo8wCTJGxM5LafQ",
+        platform: "YouTube",
+        badge: "🎬 MEDIA CREATOR",
+        color: "border-red-500 text-red-400",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-CE948092B8897068ACD9420E2F771935-Png/150/150/AvatarHeadshot/Png/noFilter",
+        verified: true,
+        bio: "Content creator streaming egg stealing raids, treadmill speedruns, and community trades."
+      },
+      {
+        name: "kagurazaka",
+        robloxUsername: "kagurazaka03",
+        robloxUrl: "https://www.roblox.com/users/8699303644/profile",
+        channelUrl: "https://www.youtube.com/channel/UCb0jAu_gkHIG1Sucgh_JtVw",
+        platform: "TikTok & YouTube",
+        badge: "🎬 MEDIA CREATOR",
+        color: "border-pink-500 text-pink-400",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E899E47EC0F284B3EA8EEE01D449F52B-Png/150/150/AvatarHeadshot/Png/noFilter",
+        verified: true,
+        bio: "Creating viral Steal An Egg TikTok reels, pet memes, and rapid hatching montages."
+      },
+      {
+        name: "keeganzignag",
+        robloxUsername: "keeganzignag",
+        robloxUrl: "https://www.roblox.com/users/78422174/profile",
+        channelUrl: "https://www.youtube.com/channel/UCL3mELxovFcSFx6DHpYCnnA",
+        platform: "YouTube",
+        badge: "🎬 MEDIA CREATOR",
+        color: "border-red-500 text-red-400",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-8527DA51A871263EE94A68EFD863741D-Png/150/150/AvatarHeadshot/Png/noFilter",
+        verified: true,
+        bio: "In-depth Steal An Egg guides, base defensive traps, and pet value updates."
+      }
     ]
   },
 

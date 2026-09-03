@@ -250,12 +250,12 @@ export default function Hero({ gameData, onNavigateTab }) {
               className="btn-3d bg-slate-900 hover:bg-slate-850 border-3 border-black rounded-2xl p-4 text-left group flex flex-col justify-between"
             >
               <div>
-                <span className="text-2xl mb-1 block">🏆</span>
-                <span className="game-text text-base text-roblox-pink block mb-1">Leaderboards &amp; Staff</span>
-                <p className="text-xs font-bubble text-slate-400">Check top egg stealers, speed levels, and verified creators.</p>
+                <span className="text-2xl mb-1 block">🛡️</span>
+                <span className="game-text text-base text-roblox-pink block mb-1">Admin &amp; Creators</span>
+                <p className="text-xs font-bubble text-slate-400">Meet the founders, developers, moderators, and verified media partners.</p>
               </div>
               <span className="mt-3 text-xs font-game text-roblox-pink flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                View Ranks <ArrowRight className="w-3.5 h-3.5" />
+                View Team <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </button>
           </div>
