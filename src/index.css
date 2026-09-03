@@ -3,19 +3,23 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* Roblox Stud Pattern Background */
+  /* Roblox Stud Pattern Background - Tiled Repeat Texture */
   .bg-studs {
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(0, 0, 0, 0.35) 70%, transparent 72%),
-      radial-gradient(circle at 50% 52%, rgba(0, 0, 0, 0.4) 60%, transparent 75%);
-    background-size: 26px 26px;
+    background-image: url('/assets/stud-texture.webp');
+    background-repeat: repeat;
+    background-size: 140px 140px;
   }
 
   .bg-studs-dense {
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(0, 0, 0, 0.4) 65%, transparent 68%),
-      radial-gradient(circle at 50% 52%, rgba(0, 0, 0, 0.5) 55%, transparent 70%);
-    background-size: 18px 18px;
+    background-image: url('/assets/stud-texture.webp');
+    background-repeat: repeat;
+    background-size: 80px 80px;
+  }
+
+  .bg-studs-lg {
+    background-image: url('/assets/stud-texture.webp');
+    background-repeat: repeat;
+    background-size: 210px 210px;
   }
 
   /* Cartoon Text Stroke & Shadow */

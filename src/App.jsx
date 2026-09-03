@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectIndex from './components/ProjectIndex';
+import PetEggVault from './components/PetEggVault';
 import ProjectModal from './components/ProjectModal';
 import Skills from './components/Skills';
 import ShopCommission from './components/ShopCommission';
@@ -29,6 +30,11 @@ export default function App() {
           categories={portfolioData.categories}
           onSelectProject={(project) => setActiveModalProject(project)}
         />
+
+        {/* Live Steal An Egg Vault (236 items from item_showcase) */}
+        <section id="vault" className="py-12 px-4 max-w-6xl mx-auto">
+          <PetEggVault />
+        </section>
 
         <Skills 
           skills={portfolioData.devProfile.skills} 

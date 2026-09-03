@@ -54,6 +54,14 @@ export default function Navbar({ onOpenContact }) {
             Project Index
           </a>
           <a
+            href="#vault"
+            onClick={(e) => handleNavClick(e, 'vault')}
+            className="px-3.5 py-1.5 rounded-xl font-game text-sm text-yellow-300 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
+          >
+            <span>🐾</span>
+            Pet &amp; Egg Vault
+          </a>
+          <a
             href="#skills"
             onClick={(e) => handleNavClick(e, 'skills')}
             className="px-3.5 py-1.5 rounded-xl font-game text-sm text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
