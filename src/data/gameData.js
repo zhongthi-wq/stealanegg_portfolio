@@ -281,6 +281,144 @@ export const gameData = {
       }
     ],
 
+    vipCreator: {
+      name: "ItsLossi",
+      displayName: "Minion",
+      robloxUsername: "ItsLossi",
+      robloxId: "11216231342",
+      robloxUrl: "https://www.roblox.com/users/11216231342/profile",
+      avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A8E6BDCE581F183EC45F976798F9A4C7-Png/150/150/AvatarHeadshot/Png/noFilter",
+      tiktokHandle: "@itslossi",
+      tiktokUrl: "https://www.tiktok.com/@itslossi",
+      badges: [
+        { label: "TESTER", color: "bg-fuchsia-600 text-white", isTester: true },
+        { label: "VERIFIED CREATOR", color: "bg-yellow-400 text-black", isVerified: true },
+        { label: "VIP IN-GAME PARTNER (Item Spawner & Egg Gifter)", color: "bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold", isPerk: true },
+        { label: "FAMOUS TIKTOK STREAMER", color: "bg-black text-white border border-pink-500", isTiktok: true }
+      ],
+      tag: "VIP CREATOR & IN-GAME PARTNER",
+      bio: "Famous TikTok creator & streamer (@itslossi). Official Steal An Egg QA tester equipped with special in-game privileges including item spawner, rare egg gifting, and live stream community drop events!"
+    },
+
+    tiktokCreators: [
+      {
+        name: "ItsLossi",
+        displayName: "Minion",
+        handle: "@itslossi",
+        tiktokUrl: "https://www.tiktok.com/@itslossi",
+        robloxUrl: "https://www.roblox.com/users/11216231342/profile",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A8E6BDCE581F183EC45F976798F9A4C7-Png/150/150/AvatarHeadshot/Png/noFilter",
+        followers: "VIP Streamer",
+        badge: "👑 VIP TIKTOK PARTNER",
+        verified: true,
+        hasRoblox: true,
+        perks: "Item Spawner & Egg Gifter",
+        bio: "Famous TikTok creator & streamer. Official game QA tester with in-game item spawner & egg gifting perks for live viewers!"
+      },
+      {
+        name: "KreekCraft",
+        handle: "@kreekcraft",
+        tiktokUrl: "https://www.tiktok.com/@kreekcraft",
+        robloxUrl: "https://www.roblox.com/users/140258990/profile",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F75D21B2173BF2D669691C35227DFB15-Png/150/150/AvatarHeadshot/Png/noFilter",
+        followers: "3.5M Followers",
+        badge: "⭐ TOP STREAMER",
+        verified: true,
+        hasRoblox: true,
+        bio: "Legendary Roblox creator streaming live egg raids and reaction shorts to millions of fans."
+      },
+      {
+        name: "Leah Ashe",
+        handle: "@leahashe",
+        tiktokUrl: "https://www.tiktok.com/@leahashe",
+        robloxUrl: "https://www.roblox.com/users/142541386/profile",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-4CA63262CBDDABD64BDFE0C6F2F8EB7D-Png/150/150/AvatarHeadshot/Png/noFilter",
+        followers: "4.8M Followers",
+        badge: "⭐ TIKTOK QUEEN",
+        verified: true,
+        hasRoblox: true,
+        bio: "Vibrant Roblox creator known for cute pet showcases, egg hatching streaks, and base designs."
+      },
+      {
+        name: "DenisDaily",
+        handle: "@denisdaily",
+        tiktokUrl: "https://www.tiktok.com/@denisdaily",
+        robloxUrl: "https://www.roblox.com/users/121823922/profile",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-748EFE282142A3DEBF619158296F603B-Png/150/150/AvatarHeadshot/Png/noFilter",
+        followers: "2.8M Followers",
+        badge: "⭐ ROBLOX LEGEND",
+        verified: true,
+        hasRoblox: true,
+        bio: "Iconic gaming star with millions of views exploring speed treadmills and divine pet mutations."
+      },
+      {
+        name: "Skeptical",
+        handle: "@skepticalroblox",
+        tiktokUrl: "https://www.tiktok.com/@skeptical",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=SkepticalBlox&backgroundColor=06b6d4",
+        followers: "2.1M Followers",
+        badge: "🎵 VIRAL CREATOR",
+        verified: true,
+        hasRoblox: false,
+        bio: "Viral comedic Roblox TikToks, funny base infiltration fails, and high-speed chaser escapes."
+      },
+      {
+        name: "Charli Blox",
+        handle: "@charlixroblox",
+        tiktokUrl: "https://www.tiktok.com/@charlixroblox",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=CharliBlox&backgroundColor=ec4899",
+        followers: "1.6M Followers",
+        badge: "🎵 TIKTOK DANCE & CLIPS",
+        verified: true,
+        hasRoblox: false,
+        bio: "TikTok dance trends inside Steal An Egg with rare mutated pets and cosmetic trails."
+      },
+      {
+        name: "DefildPlays",
+        handle: "@defildplays",
+        tiktokUrl: "https://www.tiktok.com/@defildplays",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=DefildPlays&backgroundColor=eab308",
+        followers: "1.4M Followers",
+        badge: "🎵 SIMULATOR PRO",
+        verified: true,
+        hasRoblox: false,
+        bio: "Simulator grinding guides, egg luck tricks, and treadmill rebirth tutorials on TikTok."
+      },
+      {
+        name: "InquisitorMaster",
+        handle: "@inquisitormaster",
+        tiktokUrl: "https://www.tiktok.com/@inquisitormaster",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=InquisitorMaster&backgroundColor=8b5cf6",
+        followers: "3.9M Followers",
+        badge: "⭐ ROBLOX SQUAD",
+        verified: true,
+        hasRoblox: false,
+        bio: "Viral squad gameplay and chaotic egg stealing raids with friend squads on live stream."
+      },
+      {
+        name: "Lana Blox",
+        handle: "@lanablox",
+        tiktokUrl: "https://www.tiktok.com/@lanablox",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=LanaBlox&backgroundColor=f43f5e",
+        followers: "1.1M Followers",
+        badge: "🎵 TIKTOK SPEEDRUNNER",
+        verified: true,
+        hasRoblox: false,
+        bio: "Crazy fast base sneaking heists, clutching eggs under 5 seconds, and speedrun challenges."
+      },
+      {
+        name: "Roblox Moments",
+        handle: "@robloxmoments.exe",
+        tiktokUrl: "https://www.tiktok.com/@robloxmoments",
+        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=RobloxMoments&backgroundColor=10b981",
+        followers: "2.4M Followers",
+        badge: "🎵 MEME CLIPS",
+        verified: true,
+        hasRoblox: false,
+        bio: "Daily highlight reels of the funniest egg steals, karma moments, and super speed escapes."
+      }
+    ],
+
     mediaCreators: [
       {
         name: "Jujubo TV",
