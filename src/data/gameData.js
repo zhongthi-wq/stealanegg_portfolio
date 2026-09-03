@@ -29,9 +29,9 @@ export const gameData = {
   platforms: ["🖥️ Desktop", "🎮 Console (Xbox / PS)", "📱 Mobile", "📟 Tablet"],
 
   stats: [
-    { label: "Total Visits", value: "25M+", icon: "Gamepad2", color: "text-roblox-cyan" },
+    { label: "Total Visits", value: "1.5B+", icon: "Gamepad2", color: "text-roblox-cyan" },
     { label: "Unique Pets & Eggs", value: "236", icon: "Boxes", color: "text-roblox-yellow" },
-    { label: "Active Stealers", value: "4,500+", icon: "Users", color: "text-roblox-green" },
+    { label: "Active Stealers", value: "1M+", icon: "Users", color: "text-roblox-green" },
     { label: "Player Rating", value: "95% 👍", icon: "Star", color: "text-roblox-pink" }
   ],
 
