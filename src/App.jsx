@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PetEggVault from './components/PetEggVault';
@@ -10,38 +10,94 @@ import Footer from './components/Footer';
 import { gameData } from './data/gameData';
 
 export default function App() {
+  // Tabs: 'home' | 'wiki' | 'players' | 'updates' | 'codes' | 'faq'
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (['home', 'wiki', 'players', 'updates', 'codes', 'faq'].includes(hash)) {
+        return hash;
+      }
+    }
+    return 'home';
+  });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (['home', 'wiki', 'players', 'updates', 'codes', 'faq'].includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    window.location.hash = tabId;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen bg-[#0d121c] text-slate-100 flex flex-col font-sans selection:bg-roblox-cyan selection:text-black">
-      {/* Top Game Navigation */}
-      <Navbar gameData={gameData} />
+    <div className="min-h-screen bg-[#0b0f17] text-slate-100 flex flex-col font-sans selection:bg-roblox-cyan selection:text-black relative">
+      
+      {/* Global Background with Tiled Stud Texture at 75% Opacity (Not overused) */}
+      <div 
+        className="fixed inset-0 bg-studs opacity-75 pointer-events-none -z-10" 
+        style={{ opacity: 0.75 }}
+      />
 
-      {/* Main Content Sections */}
-      <main className="flex-1 space-y-16">
-        {/* Hero & How to Play */}
-        <Hero gameData={gameData} />
+      {/* Vibrant Yellow Game Navbar */}
+      <Navbar 
+        gameData={gameData} 
+        activeTab={activeTab} 
+        onTabChange={handleTabChange} 
+      />
 
-        {/* 236-item Pet & Egg Official Wiki Database */}
-        <section className="py-4 px-4 max-w-6xl mx-auto">
-          <PetEggVault />
-        </section>
+      {/* Main Content Area: Render Only Active Tab (Separated Pages/Views) */}
+      <main className="flex-1 py-6 px-4 max-w-6xl mx-auto w-full">
+        {activeTab === 'home' && (
+          <Hero 
+            gameData={gameData} 
+            onNavigateTab={handleTabChange} 
+          />
+        )}
 
-        {/* Players, Leaderboards & Staff Hall of Fame */}
-        <PlayersStaff staffAndPlayers={gameData.staffAndPlayers} />
+        {activeTab === 'wiki' && (
+          <div className="animate-fadeIn">
+            <PetEggVault />
+          </div>
+        )}
 
-        {/* Updates, Countdown & Sneak Peeks */}
-        <UpdatesEvents 
-          updates={gameData.updates} 
-          sneakPeeks={gameData.sneakPeeks} 
-        />
+        {activeTab === 'players' && (
+          <div className="animate-fadeIn">
+            <PlayersStaff staffAndPlayers={gameData.staffAndPlayers} />
+          </div>
+        )}
 
-        {/* Active Promo Codes */}
-        <CodesSection codes={gameData.activeCodes} />
+        {activeTab === 'updates' && (
+          <div className="animate-fadeIn">
+            <UpdatesEvents 
+              updates={gameData.updates} 
+              sneakPeeks={gameData.sneakPeeks} 
+            />
+          </div>
+        )}
 
-        {/* FAQ Section */}
-        <FAQSection faqList={gameData.faq} />
+        {activeTab === 'codes' && (
+          <div className="animate-fadeIn">
+            <CodesSection codes={gameData.activeCodes} />
+          </div>
+        )}
+
+        {activeTab === 'faq' && (
+          <div className="animate-fadeIn">
+            <FAQSection faqList={gameData.faq} />
+          </div>
+        )}
       </main>
 
-      {/* Official Game Community Footer */}
+      {/* Community Footer */}
       <Footer gameData={gameData} />
     </div>
   );

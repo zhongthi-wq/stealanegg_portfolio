@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Sparkles, Gamepad2, Gift, HelpCircle, Users, Bell, ExternalLink } from 'lucide-react';
+import { Volume2, VolumeX, Gamepad2, Gift, HelpCircle, Users, Bell, BookOpen, Home } from 'lucide-react';
 import { sound } from '../utils/audio';
 
-export default function Navbar({ gameData }) {
+export default function Navbar({ gameData, activeTab, onTabChange }) {
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   const toggleSound = () => {
@@ -12,117 +12,120 @@ export default function Navbar({ gameData }) {
     if (nextState) sound.playPop();
   };
 
-  const handleNavClick = (e, id) => {
-    e.preventDefault();
+  const navItems = [
+    { id: 'home', label: 'Home', icon: Home },
+    { id: 'wiki', label: 'Pet & Egg Wiki', icon: BookOpen, badge: '236' },
+    { id: 'players', label: 'Players & Staff', icon: Users },
+    { id: 'updates', label: 'Updates & Events', icon: Bell },
+    { id: 'codes', label: 'Codes', icon: Gift, badge: 'Free' },
+    { id: 'faq', label: 'FAQ', icon: HelpCircle },
+  ];
+
+  const handleItemClick = (id) => {
     sound.playPop();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    onTabChange(id);
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#121824]/95 backdrop-blur-md border-b-4 border-black px-4 py-2.5 shadow-lg bg-studs">
+    <header className="sticky top-0 z-50 bg-yellow-400 border-b-4 border-black px-4 py-2.5 shadow-xl">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-        {/* Game Logo & Title */}
-        <a 
-          href="#" 
-          onClick={() => sound.playPop()}
-          className="flex items-center gap-3 group"
+        
+        {/* Game Logo & Brand */}
+        <button 
+          onClick={() => handleItemClick('home')}
+          className="flex items-center gap-3 group text-left"
         >
           <img 
             src={gameData.logo} 
             alt={gameData.title}
-            className="w-11 h-11 rounded-2xl border-3 border-black shadow-md object-cover group-hover:scale-105 transition-transform"
+            className="w-11 h-11 rounded-2xl border-3 border-black shadow-md object-cover group-hover:scale-105 transition-transform bg-white"
           />
           <div>
-            <span className="game-text text-xl md:text-2xl text-yellow-300 block leading-tight tracking-wide drop-shadow">
+            <span className="font-game text-xl md:text-2xl text-black block leading-tight tracking-wide drop-shadow-sm">
               STEAL AN EGG
             </span>
-            <span className="text-[10px] md:text-xs text-roblox-cyan font-bold tracking-widest uppercase block font-bubble">
+            <span className="text-[10px] md:text-xs text-slate-900 font-extrabold tracking-widest uppercase block font-bubble">
               Official Game Hub
             </span>
           </div>
-        </a>
+        </button>
 
-        {/* Desktop Nav Links (English 100%) */}
-        <nav className="hidden lg:flex items-center gap-1.5 bg-slate-900/90 p-1.5 rounded-2xl border-2 border-black">
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, 'home')}
-            className="px-3 py-1.5 rounded-xl font-game text-xs text-slate-200 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
-          >
-            Home
-          </a>
-          <a
-            href="#wiki"
-            onClick={(e) => handleNavClick(e, 'wiki')}
-            className="px-3 py-1.5 rounded-xl font-game text-xs text-yellow-300 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
-          >
-            <span>🐾</span>
-            Pet &amp; Egg Wiki
-          </a>
-          <a
-            href="#players"
-            onClick={(e) => handleNavClick(e, 'players')}
-            className="px-3 py-1.5 rounded-xl font-game text-xs text-roblox-cyan hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
-          >
-            <Users className="w-3.5 h-3.5" />
-            Players &amp; Staff
-          </a>
-          <a
-            href="#updates"
-            onClick={(e) => handleNavClick(e, 'updates')}
-            className="px-3 py-1.5 rounded-xl font-game text-xs text-roblox-pink hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
-          >
-            <Bell className="w-3.5 h-3.5" />
-            Updates &amp; Events
-          </a>
-          <a
-            href="#codes"
-            onClick={(e) => handleNavClick(e, 'codes')}
-            className="px-3 py-1.5 rounded-xl font-game text-xs text-roblox-green hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
-          >
-            <Gift className="w-3.5 h-3.5" />
-            Codes
-          </a>
-          <a
-            href="#faq"
-            onClick={(e) => handleNavClick(e, 'faq')}
-            className="px-3 py-1.5 rounded-xl font-game text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5"
-          >
-            <HelpCircle className="w-3.5 h-3.5" />
-            FAQ
-          </a>
+        {/* Tab Navigation Menu (Separate Pages/Views) */}
+        <nav className="hidden lg:flex items-center gap-1.5 bg-yellow-500/60 p-1.5 rounded-2xl border-2 border-black/40">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+                className={`px-3.5 py-1.5 rounded-xl font-game text-xs transition-all flex items-center gap-1.5 relative select-none ${
+                  isActive
+                    ? 'bg-slate-950 text-yellow-300 shadow-md border-2 border-black -translate-y-0.5'
+                    : 'text-black hover:bg-yellow-300/80'
+                }`}
+              >
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-yellow-300' : 'text-slate-900'}`} />
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span className={`text-[9px] font-bubble px-1.5 py-0.2 rounded-md font-bold uppercase ${
+                    isActive ? 'bg-yellow-400 text-black' : 'bg-black text-yellow-300'
+                  }`}>
+                    {item.badge}
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </nav>
 
-        {/* Right CTA Actions */}
-        <div className="flex items-center gap-2.5">
+        {/* Mobile & Action Controls */}
+        <div className="flex items-center gap-2">
           {/* Sound Toggle */}
           <button
             onClick={toggleSound}
-            title={soundEnabled ? "Mute sound" : "Enable sound"}
-            className="w-10 h-10 rounded-xl bg-slate-800 border-2 border-black flex items-center justify-center text-slate-200 hover:text-white hover:bg-slate-700 active:scale-95 transition"
+            title={soundEnabled ? "Mute audio" : "Enable audio"}
+            className="w-10 h-10 rounded-xl bg-yellow-300 hover:bg-yellow-200 border-2 border-black flex items-center justify-center text-black active:scale-95 transition shadow-sm"
           >
             {soundEnabled ? (
-              <Volume2 className="w-5 h-5 text-roblox-cyan" />
+              <Volume2 className="w-5 h-5 text-black" />
             ) : (
-              <VolumeX className="w-5 h-5 text-slate-500" />
+              <VolumeX className="w-5 h-5 text-slate-600" />
             )}
           </button>
 
-          {/* Big Play on Roblox Button */}
+          {/* Big Play Button on Roblox */}
           <a
             href={gameData.playUrl}
             target="_blank"
             rel="noreferrer"
             onClick={() => sound.playClaim()}
-            className="btn-3d px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 text-black font-game text-xs md:text-sm uppercase tracking-wider border-2 border-black flex items-center gap-1.5 font-bold shadow-md"
+            className="btn-3d px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-game text-xs md:text-sm uppercase tracking-wider border-2 border-black flex items-center gap-1.5 font-bold shadow-md"
           >
             <span>Play Game</span>
-            <Gamepad2 className="w-4 h-4 text-black" />
+            <Gamepad2 className="w-4 h-4 text-white" />
           </a>
         </div>
+      </div>
+
+      {/* Mobile Tab Bar (Visible on mobile/tablet) */}
+      <div className="lg:hidden mt-2.5 pt-2 border-t-2 border-black/30 flex items-center gap-1 overflow-x-auto pb-1">
+        {navItems.map((item) => {
+          const isActive = activeTab === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => handleItemClick(item.id)}
+              className={`px-3 py-1.5 rounded-xl font-game text-[11px] whitespace-nowrap transition-all border ${
+                isActive
+                  ? 'bg-slate-950 text-yellow-300 border-black shadow'
+                  : 'bg-yellow-300/80 text-black border-black/20 hover:bg-yellow-200'
+              }`}
+            >
+              {item.label}
+            </button>
+          );
+        })}
       </div>
     </header>
   );

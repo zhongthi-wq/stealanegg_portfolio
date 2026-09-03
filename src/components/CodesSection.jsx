@@ -42,7 +42,7 @@ export default function CodesSection({ codes }) {
           {codes.map((item, idx) => (
             <div
               key={idx}
-              className="bg-[#18212e] border-4 border-black rounded-3xl p-5 shadow-stud-card flex flex-col justify-between hover:-translate-y-1 transition-all bg-studs"
+              className="bg-[#18212e] border-4 border-black rounded-3xl p-5 shadow-stud-card flex flex-col justify-between hover:-translate-y-1 transition-all"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">

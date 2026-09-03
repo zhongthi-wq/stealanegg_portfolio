@@ -196,7 +196,7 @@ export default function PetEggVault() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* Left: Scrollable Grid of Pet/Egg Cards (Cols 1-8) */}
-        <div className="lg:col-span-8 bg-[#18212e] border-4 border-black rounded-3xl p-4 md:p-6 shadow-stud-card bg-studs">
+        <div className="lg:col-span-8 bg-[#18212e] border-4 border-black rounded-3xl p-4 md:p-6 shadow-stud-card">
           <div className="flex items-center justify-between mb-4 border-b-2 border-slate-800 pb-3">
             <div className="font-game text-sm text-yellow-300 flex items-center gap-1.5">
               <span>🎒</span> Catalog Items ({filtered.length} visible)
@@ -285,7 +285,7 @@ export default function PetEggVault() {
         {/* Right: Detailed Inspector & Current Panel (Cols 9-12) */}
         <div className="lg:col-span-4 sticky top-20 space-y-4">
           {activeItem ? (
-            <div className="bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card relative overflow-hidden bg-studs">
+            <div className="bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card relative overflow-hidden">
               {/* Header */}
               <div className="flex items-center justify-between mb-3 border-b-2 border-slate-800 pb-3">
                 <span className="font-game text-xs uppercase tracking-wider text-yellow-300 flex items-center gap-1">

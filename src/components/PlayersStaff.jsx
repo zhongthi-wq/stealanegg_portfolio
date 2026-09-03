@@ -60,7 +60,7 @@ export default function PlayersStaff({ staffAndPlayers }) {
               <div
                 key={idx}
                 onMouseEnter={() => sound.playPop()}
-                className="bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card relative flex flex-col justify-between hover:-translate-y-1 transition-all bg-studs"
+                className="bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card relative flex flex-col justify-between hover:-translate-y-1 transition-all"
               >
                 <div>
                   {/* Avatar Frame */}
@@ -108,7 +108,7 @@ export default function PlayersStaff({ staffAndPlayers }) {
 
         {/* TAB 2: GLOBAL LEADERBOARD */}
         {activeTab === 'leaderboard' && (
-          <div className="bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card bg-studs animate-fadeIn">
+          <div className="bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card animate-fadeIn">
             <div className="flex items-center justify-between border-b-2 border-slate-800 pb-4 mb-4">
               <div className="flex items-center gap-2">
                 <Crown className="w-6 h-6 text-yellow-400" />

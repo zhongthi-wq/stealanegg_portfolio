@@ -38,7 +38,7 @@ export default function UpdatesEvents({ updates, sneakPeeks }) {
         </div>
 
         {/* Live Update Countdown Banner */}
-        <div className="bg-gradient-to-r from-amber-500/20 via-yellow-500/20 to-amber-500/20 border-4 border-black rounded-3xl p-6 shadow-stud-card relative overflow-hidden bg-studs">
+        <div className="bg-gradient-to-r from-amber-500/20 via-yellow-500/20 to-amber-500/20 border-4 border-black rounded-3xl p-6 shadow-stud-card relative overflow-hidden">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 text-yellow-300 font-game text-sm uppercase tracking-wider mb-1">
@@ -81,7 +81,7 @@ export default function UpdatesEvents({ updates, sneakPeeks }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
           {/* Left: Patch Notes (Cols 1-7) */}
-          <div className="lg:col-span-7 bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card bg-studs space-y-6">
+          <div className="lg:col-span-7 bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card space-y-6">
             <div className="flex items-center justify-between border-b-2 border-slate-800 pb-3">
               <span className="game-text text-xl text-white flex items-center gap-2">
                 <Clock className="w-5 h-5 text-roblox-cyan" />
@@ -125,7 +125,7 @@ export default function UpdatesEvents({ updates, sneakPeeks }) {
           </div>
 
           {/* Right: Sneak Peeks Gallery (Cols 8-12) */}
-          <div className="lg:col-span-5 bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card bg-studs space-y-6">
+          <div className="lg:col-span-5 bg-[#18212e] border-4 border-black rounded-3xl p-6 shadow-stud-card space-y-6">
             <div className="flex items-center justify-between border-b-2 border-slate-800 pb-3">
               <span className="game-text text-xl text-yellow-300 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-yellow-400" />

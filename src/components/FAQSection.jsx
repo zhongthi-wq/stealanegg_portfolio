@@ -35,7 +35,7 @@ export default function FAQSection({ faqList }) {
             return (
               <div
                 key={idx}
-                className="bg-[#18212e] border-3 border-black rounded-2xl overflow-hidden shadow-stud-card transition bg-studs"
+                className="bg-[#18212e] border-3 border-black rounded-2xl overflow-hidden shadow-stud-card transition"
               >
                 <button
                   onClick={() => toggle(idx)}

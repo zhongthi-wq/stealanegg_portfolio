@@ -4,11 +4,11 @@ import { sound } from '../utils/audio';
 
 export default function Footer({ gameData }) {
   return (
-    <footer className="pt-16 pb-12 px-4 bg-[#0d121c] border-t-4 border-black relative bg-studs">
+    <footer className="pt-16 pb-12 px-4 bg-[#0d121c] border-t-4 border-black relative">
       <div className="max-w-6xl mx-auto relative z-10 space-y-10">
         
         {/* Main Banner CTA */}
-        <div className="bg-gradient-to-br from-[#18212e] via-[#151c27] to-[#101620] border-4 border-black rounded-3xl p-8 md:p-10 shadow-stud-card text-center relative overflow-hidden bg-studs">
+        <div className="bg-gradient-to-br from-[#18212e] via-[#151c27] to-[#101620] border-4 border-black rounded-3xl p-8 md:p-10 shadow-stud-card text-center relative overflow-hidden">
           <img
             src={gameData.logo}
             alt={gameData.title}
