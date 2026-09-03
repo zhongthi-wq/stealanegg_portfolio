@@ -11,22 +11,27 @@ import { gameData } from './data/gameData';
 
 export default function App() {
   // Tabs: 'home' | 'wiki' | 'players' | 'updates' | 'codes' | 'faq'
+  const resolveTabFromHash = (h) => {
+    const clean = (h || '').replace('#', '').toLowerCase();
+    if (['home', 'wiki', 'players', 'updates', 'codes', 'faq'].includes(clean)) {
+      return clean;
+    }
+    if (['creators', 'itslossi', 'lossi', 'media', 'tiktok', 'creator', 'staff', 'admin'].includes(clean)) {
+      return 'players';
+    }
+    return 'home';
+  };
+
   const [activeTab, setActiveTab] = useState(() => {
     if (typeof window !== 'undefined' && window.location.hash) {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['home', 'wiki', 'players', 'updates', 'codes', 'faq'].includes(hash)) {
-        return hash;
-      }
+      return resolveTabFromHash(window.location.hash);
     }
     return 'home';
   });
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['home', 'wiki', 'players', 'updates', 'codes', 'faq'].includes(hash)) {
-        setActiveTab(hash);
-      }
+      setActiveTab(resolveTabFromHash(window.location.hash));
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);

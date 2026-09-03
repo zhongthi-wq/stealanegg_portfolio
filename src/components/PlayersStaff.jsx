@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Shield, Crown, Sparkles, ExternalLink, MessageSquare, Flame, FlaskConical, Gift } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Shield, Crown, Sparkles, ExternalLink, MessageSquare, Flame, FlaskConical, Gift, Share2, Check } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { sound } from '../utils/audio';
 
 function YoutubeIcon({ className = "w-4 h-4" }) {
@@ -19,10 +20,72 @@ function TikTokIcon({ className = "w-4 h-4" }) {
 }
 
 export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
-  const [subTab, setSubTab] = useState('staff'); // 'staff' | 'creators'
-  const [creatorCategory, setCreatorCategory] = useState('all'); // 'all' | 'tiktok' | 'youtube'
+  const [subTab, setSubTab] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const h = window.location.hash.replace('#', '').toLowerCase();
+      if (['creators', 'itslossi', 'lossi', 'media', 'tiktok', 'creator'].includes(h)) {
+        return 'creators';
+      }
+    }
+    return 'staff';
+  });
+
+  const [creatorCategory, setCreatorCategory] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const h = window.location.hash.replace('#', '').toLowerCase();
+      if (h === 'tiktok') return 'tiktok';
+      if (h === 'youtube') return 'youtube';
+    }
+    return 'all';
+  });
+
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [highlightCard, setHighlightCard] = useState(false);
 
   const { owner, developers, mod, communityManager, testers, featuredYoutubers, mediaCreators, vipCreator, tiktokCreators } = adminStaffAndCreators;
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (typeof window === 'undefined') return;
+      const h = window.location.hash.replace('#', '').toLowerCase();
+      if (['creators', 'itslossi', 'lossi', 'media', 'tiktok', 'creator'].includes(h)) {
+        setSubTab('creators');
+        if (h === 'tiktok') {
+          setCreatorCategory('tiktok');
+        }
+        if (h === 'itslossi' || h === 'lossi' || h === 'creators') {
+          setHighlightCard(true);
+          setTimeout(() => {
+            const el = document.getElementById('itslossi');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }, 250);
+          setTimeout(() => setHighlightCard(false), 4000);
+        }
+      } else if (['staff', 'admin'].includes(h)) {
+        setSubTab('staff');
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const handleShareLink = () => {
+    sound.playClaim();
+    const url = `${window.location.origin}${window.location.pathname}#itslossi`;
+    navigator.clipboard.writeText(url);
+    setCopiedLink(true);
+    confetti({
+      particleCount: 50,
+      spread: 60,
+      origin: { y: 0.6 },
+      colors: ['#00d2ff', '#ff007f', '#ffe600', '#39ff14']
+    });
+    setTimeout(() => setCopiedLink(false), 3000);
+  };
 
   return (
     <div className="space-y-8 animate-fadeIn">
@@ -44,7 +107,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
       <div className="flex justify-center">
         <div className="bg-slate-900 border-3 border-black rounded-2xl p-1.5 flex gap-2 shadow-md">
           <button
-            onClick={() => { sound.playPop(); setSubTab('staff'); }}
+            onClick={() => { sound.playPop(); setSubTab('staff'); window.location.hash = 'staff'; }}
             className={`px-6 py-2.5 rounded-xl font-game text-sm transition-all flex items-center gap-2 ${
               subTab === 'staff'
                 ? 'bg-yellow-400 text-black shadow-md -translate-y-0.5'
@@ -56,7 +119,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
           </button>
 
           <button
-            onClick={() => { sound.playPop(); setSubTab('creators'); }}
+            onClick={() => { sound.playPop(); setSubTab('creators'); window.location.hash = 'creators'; }}
             className={`px-6 py-2.5 rounded-xl font-game text-sm transition-all flex items-center gap-2 ${
               subTab === 'creators'
                 ? 'bg-rose-500 text-white shadow-md -translate-y-0.5'
@@ -413,11 +476,18 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
 
       {/* ================= TAB 2: MEDIA CREATORS & TIKTOK STARS ================= */}
       {subTab === 'creators' && (
-        <div className="space-y-8 animate-fadeIn">
+        <div id="creators" className="space-y-8 animate-fadeIn">
           
           {/* USER'S VIP CREATOR PROFILE SHOWCASE (@itslossi) */}
           {vipCreator && (
-            <div className="bg-gradient-to-r from-teal-950/50 via-[#18212e] to-pink-950/50 border-4 border-cyan-400 rounded-3xl p-6 md:p-8 shadow-[0_0_35px_rgba(6,182,212,0.3)] relative overflow-hidden">
+            <div 
+              id="itslossi"
+              className={`bg-gradient-to-r from-teal-950/60 via-[#18212e] to-pink-950/60 border-4 rounded-3xl p-6 md:p-8 shadow-[0_0_35px_rgba(6,182,212,0.3)] relative overflow-hidden transition-all duration-500 ${
+                highlightCard 
+                  ? 'border-yellow-400 ring-4 ring-yellow-400 ring-offset-4 ring-offset-black scale-[1.01]' 
+                  : 'border-cyan-400'
+              }`}
+            >
               <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8">
                 
                 {/* Avatar with Verified & Glow */}
@@ -482,7 +552,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                     {vipCreator.bio}
                   </p>
 
-                  {/* Action Buttons: TikTok & Roblox */}
+                  {/* Action Buttons: TikTok, Roblox & Share Direct Link */}
                   <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
                     <a
                       href={vipCreator.tiktokUrl}
@@ -506,6 +576,24 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                       <span>Roblox Profile (@{vipCreator.robloxUsername})</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
+
+                    <button
+                      onClick={handleShareLink}
+                      className="btn-3d px-4 py-2.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-game text-xs md:text-sm border-2 border-black flex items-center gap-2 font-bold shadow"
+                      title="Copy Direct Link to this profile"
+                    >
+                      {copiedLink ? (
+                        <>
+                          <Check className="w-4 h-4 text-black" />
+                          <span>Copied Share Link!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Share2 className="w-4 h-4 text-black" />
+                          <span>Share Direct Profile Link</span>
+                        </>
+                      )}
+                    </button>
                   </div>
                 </div>
 
@@ -773,7 +861,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                       <div>
                         <div className="flex items-start gap-4 mb-3">
                           <div className="relative flex-shrink-0">
-                            <div className="w-18 h-18 rounded-2xl bg-slate-950 border-3 border-black overflow-hidden p-1">
+                            <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-slate-950 border-3 border-black overflow-hidden p-1">
                               <img
                                 src={creator.avatar}
                                 alt={creator.name}
