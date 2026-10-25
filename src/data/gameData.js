@@ -323,6 +323,18 @@ export const gameData = {
         bio: "Famous TikTok creator & streamer (@itslossi & @lossinion). Official game QA tester with in-game item spawner & egg gifting perks for live viewers!"
       },
       {
+        anchorId: "fin",
+        name: "Finn",
+        handle: "@lossivault",
+        tiktokUrl: "https://www.tiktok.com/@lossivault",
+        robloxUrl: "https://www.roblox.com/users/4520048002/profile",
+        avatar: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A27260ACEF700D73704A4E73D597D682-Png/150/150/AvatarHeadshot/Png/noFilter",
+        followers: "Media Partner",
+        verified: true,
+        hasRoblox: true,
+        bio: "Official Steal An Egg media creator on TikTok (@lossivault). Roblox: @FinnthequeenX."
+      },
+      {
         name: "KreekCraft",
         handle: "@kreekcraft",
         tiktokUrl: "https://www.tiktok.com/@kreekcraft",

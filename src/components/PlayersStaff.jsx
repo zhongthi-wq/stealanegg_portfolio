@@ -23,7 +23,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
   const [subTab, setSubTab] = useState(() => {
     if (typeof window !== 'undefined' && window.location.hash) {
       const h = window.location.hash.replace('#', '').toLowerCase();
-      if (['creators', 'itslossi', 'lossi', 'lossinion', 'media', 'tiktok', 'creator'].includes(h)) {
+      if (['creators', 'itslossi', 'lossi', 'lossinion', 'fin', 'media', 'tiktok', 'creator'].includes(h)) {
         return 'creators';
       }
     }
@@ -40,7 +40,7 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
   });
 
   const [copiedLink, setCopiedLink] = useState(false);
-  const [highlightCard, setHighlightCard] = useState(false);
+  const [highlightId, setHighlightId] = useState(null);
 
   const { owner, developers, mod, communityManager, testers, featuredYoutubers, mediaCreators, vipCreator, tiktokCreators } = adminStaffAndCreators;
 
@@ -48,20 +48,24 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
     const handleHash = () => {
       if (typeof window === 'undefined') return;
       const h = window.location.hash.replace('#', '').toLowerCase();
-      if (['creators', 'itslossi', 'lossi', 'lossinion', 'media', 'tiktok', 'creator'].includes(h)) {
+      if (['creators', 'itslossi', 'lossi', 'lossinion', 'fin', 'media', 'tiktok', 'creator'].includes(h)) {
         setSubTab('creators');
         if (h === 'tiktok') {
           setCreatorCategory('tiktok');
         }
-        if (h === 'itslossi' || h === 'lossi' || h === 'lossinion' || h === 'creators') {
-          setHighlightCard(true);
+        if (h === 'fin') {
+          setCreatorCategory((c) => (c === 'youtube' ? 'all' : c));
+        }
+        const target = h === 'fin' ? 'fin' : ['itslossi', 'lossi', 'lossinion', 'creators'].includes(h) ? 'itslossi' : null;
+        if (target) {
+          setHighlightId(target);
           setTimeout(() => {
-            const el = document.getElementById('itslossi');
+            const el = document.getElementById(target);
             if (el) {
               el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }, 250);
-          setTimeout(() => setHighlightCard(false), 4000);
+          setTimeout(() => setHighlightId(null), 4000);
         }
       } else if (['staff', 'admin'].includes(h)) {
         setSubTab('staff');
@@ -483,8 +487,8 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
             <div 
               id="itslossi"
               className={`bg-gradient-to-r from-teal-950/60 via-[#18212e] to-pink-950/60 border-4 rounded-3xl p-6 md:p-8 shadow-[0_0_35px_rgba(6,182,212,0.3)] relative overflow-hidden transition-all duration-500 ${
-                highlightCard 
-                  ? 'border-yellow-400 ring-4 ring-yellow-400 ring-offset-4 ring-offset-black scale-[1.01]' 
+                highlightId === 'itslossi'
+                  ?'border-yellow-400 ring-4 ring-yellow-400 ring-offset-4 ring-offset-black scale-[1.01]' 
                   : 'border-cyan-400'
               }`}
             >
@@ -674,7 +678,12 @@ export default function PlayersStaff({ adminStaffAndCreators, verifiedBadge }) {
                 {tiktokCreators.map((tiktoker, idx) => (
                   <div
                     key={idx}
-                    className="bg-slate-900 border-3 border-black rounded-2xl p-4 hover:border-pink-500/70 transition flex flex-col justify-between shadow group"
+                    id={tiktoker.anchorId}
+                    className={`bg-slate-900 border-3 rounded-2xl p-4 hover:border-pink-500/70 transition flex flex-col justify-between shadow group ${
+                      tiktoker.anchorId && highlightId === tiktoker.anchorId
+                        ? 'border-yellow-400 ring-4 ring-yellow-400 ring-offset-4 ring-offset-black'
+                        : 'border-black'
+                    }`}
                   >
                     <div>
                       <div className="flex items-start gap-3.5 mb-3">
